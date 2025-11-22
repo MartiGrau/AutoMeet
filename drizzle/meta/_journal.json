@@ -1,0 +1,13 @@
+{
+  "version": "7",
+  "dialect": "sqlite",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "6",
+      "when": 1763828197703,
+      "tag": "0000_flippant_boom_boom",
+      "breakpoints": true
+    }
+  ]
+}
