@@ -1,11 +1,15 @@
 import { auth } from "@/auth";
 import { db } from "@/db";
 import { integrationConfigs, meetings } from "@/db/schema";
-import { eq } from "drizzle-orm";
+import { eq, desc } from "drizzle-orm";
 import { redirect } from "next/navigation";
 import { MeetingManager } from "@/components/MeetingManager";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Mic, Clock, FileText, Zap } from "lucide-react";
+
+// Force dynamic rendering to always show fresh data
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
 
 export default async function DashboardPage() {
     const session = await auth();
@@ -23,11 +27,12 @@ export default async function DashboardPage() {
         redirect("/onboarding");
     }
 
-    // Get recent meetings count
+    // Get recent meetings ordered by creation date
     const recentMeetings = await db
         .select()
         .from(meetings)
         .where(eq(meetings.userId, session.user.id))
+        .orderBy(desc(meetings.createdAt))
         .limit(5);
 
     const features = [

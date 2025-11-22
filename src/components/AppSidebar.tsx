@@ -59,8 +59,12 @@ export function AppSidebar({ children }: { children: React.ReactNode }) {
                 <Sidebar>
                     <SidebarHeader className="p-4 border-b border-gray-200 dark:border-gray-800">
                         <div className="flex items-center space-x-2">
-                            <div className="bg-primary p-2 rounded-lg">
-                                <Mic className="w-6 h-6 text-white" />
+                            <div className="bg-gradient-to-br from-blue-600 to-purple-600 p-2 rounded-lg">
+                                <img
+                                    src="/automeet-icon.png"
+                                    alt="AutoMeet"
+                                    className="w-6 h-6"
+                                />
                             </div>
                             <span className="font-bold text-xl tracking-tight">AutoMeet</span>
                         </div>
